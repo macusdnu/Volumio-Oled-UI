@@ -15,11 +15,7 @@ sudo apt-get update #
 sudo apt-get install -y apt-utils python3-setuptools python3-pip python-rpi.gpi #
 sudo pip3 install pycurl rpi.gpio psutil socketIO-client pycurl gpiozero readchar numpy requests luma.lcd readchar pillow #
 sudo apt-get install -y libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool libiniparser-dev libsdl2-2.0-0 libsdl2-dev libffi-dev libbz2-dev libexpat1-dev liblzma-dev libncurses5-dev libncursesw5-dev libreadline-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libfreetype6-dev libatlas-base-dev libjpeg-dev libfftw3-dev libasound2-dev libncursesw5-dev libtool libcurl4 libssl-dev git autoconf automake make m4 #
-git clone https://github.com/Maschine2501/cava.git #
-git clone https://github.com/Maschine2501/cava2.git /home/volumio/CAVAinstall #
 sudo chmod +x /home/volumio/NR1-UI/PreConfiguration.sh #
-#sudo chmod +x /home/volumio/NR1-UI/pcf-i2c-adress-config.sh #
-#sudo chmod +x /home/volumio/NR1-UI/ftp.sh #
 sudo echo "dtparam=spi=on" >> /boot/userconfig.txt #
 sudo echo "dtparam=i2c=on" >> /boot/userconfig.txt #
 sudo pip3 install -U pip #
@@ -59,103 +55,6 @@ getWiFi() { #
   esac #
 } #
 until getWiFi; do : ; done #
-# echo "_______________________________________________________ " #
-# echo " " #
-# echo -e "\e[4;92mDo you want to activate (Touch-)Display-Support?\e[0;0m" #
-# echo -e "\e[92mNeeded for "'"unofficial"'" LCD displays...\e[0m" #
-# echo "" #
-# echo -e "\e[91m---> Touchdisplay Plugin in Volumio needed!!! \e[0m" #
-# echo -e "\e[91m------> Please install Plugin after Setup. \e[0m" #
-# echo " " #
-# echo "______________________ " #
-# echo -e "\e[93mValid selections are: \e[0m" #
-# echo -e "1 -> \e[92m5-Inch / 800x480 Pixel\e[0m" #
-# echo -e "2 -> \e[92m7-Inch / 1024x600 Pixel\e[0m" #
-# echo -e "3 -> \e[92m8,8-Inch / 1920x480 Pixel\e[0m" #
-# echo -e "4 -> \e[91mNo (Touch-)screen\e[0m" #
-# echo -e "\e[93m--->" #
-# getDisp() { #
-#   read -p "Enter your decision: " Disp #
-#   case "$Disp" in #
-#     1) #    
-#       echo "hdmi_force_hotplug=1" >> /boot/userconfig.txt #
-#       echo "hdmi_group=2" >> /boot/userconfig.txt #
-#       echo "hdmi_mode=87" >> /boot/userconfig.txt #
-#       echo "hdmi_cvt=800 480 60 6 0 0 0" >> /boot/userconfig.txt #
-#       echo "hdmi_drive=1" >> /boot/userconfig.txt #
-#       echo " " #
-#       echo -e "\e[92mTouch-Display-Support enabled...\e[0m" #
-#       return 0 #
-#       ;; #
-#     2) #    
-#       echo "hdmi_force_hotplug=1" >> /boot/userconfig.txt #
-#       echo "hdmi_group=2" >> /boot/userconfig.txt #
-#       echo "hdmi_mode=87" >> /boot/userconfig.txt #
-#       echo "hdmi_cvt=1024 600 60 6 0 0 0" >> /boot/userconfig.txt #
-#       echo "hdmi_drive=1" >> /boot/userconfig.txt #
-#       echo " " #
-#       echo -e "\e[92mTouch-Display-Support enabled...\e[0m" #
-#       return 0 #
-#       ;; #
-#     3) #    
-#       echo "hdmi_group=2" >> /boot/userconfig.txt #
-#       echo "hdmi_mode=87" >> /boot/userconfig.txt #
-#       echo "hdmi_timings=480 0 30 30 30 1920 0 6 6 6 0 0 0 60 0 55296000 8" >> /boot/userconfig.txt #
-#       echo "hdmi_drive=2" >> /boot/userconfig.txt #
-#       echo "display_rotate=1" >> /boot/userconfig.txt #
-#       echo "hdmi_force_mode=1" >> /boot/userconfig.txt #
-#       echo "framebuffer_width=1920" >> /boot/userconfig.txt #
-#       echo "framebuffer_height=480" >> /boot/userconfig.txt #
-#       echo "max_framebuffer_width=1920" >> /boot/userconfig.txt #
-#       echo "max_framebuffer_height=1920" >> /boot/userconfig.txt #
-#       echo " " #
-#       echo -e "\e[92mTouch-Display-Support enabled...\e[0m" #
-#       return 0 #
-#       ;; #
-#     4) #
-#       echo " " #
-#       echo -e "\e[92mTouch-Display-Support disabled...\e[0m" #
-#       return 0 #
-#       ;; #        
-#     *) #
-#       printf %s\\n "Please enter '1', '2', '3' or '4'" #
-#       return 1 #
-#       ;; #
-#   esac #
-# } #
-# until getDisp; do : ; done #
-# sed -i 's/\(SpectrumActive = \)\(.*\)/\1False/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
-# sed -i 's/\(NR1UIRemoteActive = \)\(.*\)/\1False/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py
-#mkdir /home/volumio/src #
-# cd #
-# echo -e "\e[92mInstalling Cava...\e[0m"
-# cd /home/volumio/src #
-# wget http://www.fftw.org/fftw-3.3.10.tar.gz #
-# tar zxvf fftw-3.3.10.tar.gz #
-# sudo mkdir /usr/local/fftw #
-# cd fftw-3.3.10 #
-# ./configure --prefix=/usr/local/fftw --disable-fortran #
-# make #
-# sudo make install #
-# make clean #
-# ./configure --enable-float --prefix=/usr/local/fftw --disable-fortran #
-# make #
-# sudo make install #
-# cd #
-# cd /home/volumio/cava #
-# sudo bash autogen.sh #
-# ./configure && make -j4 && sudo make install #
-# cd #
-# git clone https://github.com/Maschine2501/cava2.git /home/volumio/CAVAinstall #
-# cd /home/volumio/CAVAinstall #
-# sudo bash ./autogen.sh #
-# ./configure --prefix=/home/volumio/CAVA2 && make -j4 && sudo make install #
-# cd #
-# sudo cp /home/volumio/NR1-UI/service-files/cava1.service /lib/systemd/system/ #
-# sudo cp /home/volumio/NR1-UI/service-files/cava2.service /lib/systemd/system/ #
-# sudo systemctl daemon-reload #
-# sudo systemctl enable cava1.service #
-# sudo systemctl enable cava2.service #
 echo -e "\e[92mInstalling NR1-UI and Service File...\e[0m"
 chmod +x /home/volumio/NR1-UI/nr1ui.py #
 sudo cp /home/volumio/NR1-UI/service-files/nr1uibuster.service /lib/systemd/system/ #
@@ -195,19 +94,13 @@ getDisplayType() { #
       return 0 #
       ;; #         
     3) #
-      sed -i 's/\(DisplayTechnology = \)\(.*\)/\1"'"Braun"'"/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
-      echo " " #
-      echo -e "\e[92mSet Display-Type as Braun-Specific\e[0m" #
-      return 0 #
-      ;; # 
-    4) #
       sed -i 's/\(DisplayTechnology = \)\(.*\)/\1"'"spi1351"'"/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
       sed -i 's/\(NR1UIRemoteActive = \)\(.*\)/\1True/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
       echo " " #
       echo -e "\e[92mSet Display-Type as ssd1351\e[0m" #
       return 0 #
       ;; #         
-    5) #
+    4) #
       sed -i 's/\(DisplayTechnology = \)\(.*\)/\1"'"st7735"'"/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
       sed -i 's/\(NR1UIRemoteActive = \)\(.*\)/\1True/' /home/volumio/NR1-UI/ConfigurationFiles/PreConfiguration.py #
       echo " " #
@@ -215,7 +108,7 @@ getDisplayType() { #
       return 0 #
       ;; #          
     *) #
-      printf %s\\n "Please enter '1' or '2' or '3' or '4' or '5'" #
+      printf %s\\n "Please enter '1' or '2' or '3' or '4'" #
       return 1 #
       ;; #
   esac #

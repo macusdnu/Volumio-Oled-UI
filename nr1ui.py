@@ -1,29 +1,4 @@
 #!/usr/bin/python3
-#      ____  ____  ___   __  ___   __     _   ______ ___
-#     / __ )/ __ \/   | / / / / | / /    / | / / __ <  /
-#    / __  / /_/ / /| |/ / / /  |/ /    /  |/ / /_/ / / 
-#   / /_/ / _, _/ ___ / /_/ / /|  /    / /|  / _, _/ /  
-#  /_____/_/ |_/_/  |_\____/_/ |_/    /_/ |_/_/ |_/_/   
-#    __  __              ____     __          ___            
-#   / / / /__ ___ ____  /  _/__  / /____ ____/ _/__ ________ 
-#  / /_/ (_-</ -_) __/ _/ // _ \/ __/ -_) __/ _/ _ `/ __/ -_)
-#  \____/___/\__/_/   /___/_//_/\__/\__/_/ /_/ \_,_/\__/\__/ 
-#
-#  For more Informations visit: https://github.com/Maschine2501/NR1-UI
-#   _           __  __ ___ ___ ___  __  _ 
-#  | |__ _  _  |  \/  / __|_  ) __|/  \/ |
-#  | '_ \ || | | |\/| \__ \/ /|__ \ () | |
-#  |_.__/\_, | |_|  |_|___/___|___/\__/|_|
-#        |__/                                                                                                                                            
-#________________________________________________________________________________________
-#________________________________________________________________________________________
-#	
-#    ____                           __           
-#   /  _/___ ___  ____  ____  _____/ /______   _ 
-#   / // __ `__ \/ __ \/ __ \/ ___/ __/ ___/  (_)
-# _/ // / / / / / /_/ / /_/ / /  / /_(__  )  _   
-#/___/_/ /_/ /_/ .___/\____/_/   \__/____/  (_)  
-#             /_/                                
 from __future__ import unicode_literals
 import requests
 import os
@@ -65,25 +40,25 @@ volumio_port = 3000
 volumioIO = SocketIO(volumio_host, volumio_port)
 
 # Logic to prevent freeze if FIFO-Out for Cava is missing:
-ReNewMPDconf = {'endpoint': 'music_service/mpd', 'method': 'createMPDFile', 'data': ''}
-if SpectrumActive == True:
-    with open('/etc/mpd.conf') as f1:
-        if '/tmp/mpd.fifo' in f1.read():
-            print("CAVA1 Fifo-Output is present in mpd.conf")
-        else:
-            print('CAVA1 FIFO-Output in /etc/mpd.conf is missing!')
-            print('Rebuilding mpd.conf now, this will take ~5 seconds.')
-            volumioIO.emit('callMethod', ReNewMPDconf)
-            sleep(4.0)
-    
-    with open('/etc/mpd.conf') as f2:
-        if '/tmp/mpd2.fifo' in f2.read():
-            print("CAVA2 Fifo-Output is present in mpd.conf")
-        else:
-            print('CAVA2 FIFO-Output in /etc/mpd.conf is missing!')
-            print('Rebuilding mpd.conf now, this will take ~5 seconds.')
-            volumioIO.emit('callMethod', ReNewMPDconf)
-            sleep(4.0)
+#ReNewMPDconf = {'endpoint': 'music_service/mpd', 'method': 'createMPDFile', 'data': ''}
+#if SpectrumActive == True:
+#    with open('/etc/mpd.conf') as f1:
+#        if '/tmp/mpd.fifo' in f1.read():
+#            print("CAVA1 Fifo-Output is present in mpd.conf")
+#        else:
+#            print('CAVA1 FIFO-Output in /etc/mpd.conf is missing!')
+#            print('Rebuilding mpd.conf now, this will take ~5 seconds.')
+#            volumioIO.emit('callMethod', ReNewMPDconf)
+#            sleep(4.0)
+#    
+#    with open('/etc/mpd.conf') as f2:
+#        if '/tmp/mpd2.fifo' in f2.read():
+#            print("CAVA2 Fifo-Output is present in mpd.conf")
+#        else:
+#            print('CAVA2 FIFO-Output in /etc/mpd.conf is missing!')
+#            print('Rebuilding mpd.conf now, this will take ~5 seconds.')
+#            volumioIO.emit('callMethod', ReNewMPDconf)
+#            sleep(4.0)
 #________________________________________________________________________________________
 #	
 #   ______            _____                        __  _                 
