@@ -1,3 +1,2 @@
-# Volumio-Oled-UI
-Lightweight Oled UI based on NR1-UI
-To be used on RaspberryPi > 3
+This is a fork of NR1-UI developed by Maschine2501, insired by diehardsk/Volumio-OledU
+
