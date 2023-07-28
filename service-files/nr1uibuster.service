@@ -1,10 +1,10 @@
 [Unit]
-Description=NR1-UI
+Description=Volumio-Oled-UI
  
 [Service]
 Type=simple
 WorkingDirectory=/home/volumio
-ExecStart=python3 -u /home/volumio/NR1-UI/nr1ui.py
+ExecStart=python3 -u /home/volumio/Volumio-Oled-UI/nr1ui.py
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=nr1ui

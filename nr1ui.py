@@ -98,41 +98,41 @@ if DisplayTechnology == 'i2c1306':
     if SpectrumActive == False:
         ScreenList = ['Progress-Bar', 'Essential']
 
-NowPlayingLayoutSave=open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt').readline().rstrip()
+NowPlayingLayoutSave=open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt').readline().rstrip()
 print('Layout selected during setup: ', NowPlayingLayout)
 print('Last manually selected Layout: ', NowPlayingLayoutSave)
 
 if DisplayTechnology == 'spi1322':
     if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
         WriteScreen1.write('No-Spectrum')
         WriteScreen1.close
         NowPlayingLayout = 'No-Spectrum'
 
 if DisplayTechnology == 'spi1351':
     if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
         WriteScreen1.write('No-Spectrum')
         WriteScreen1.close
         NowPlayingLayout = 'No-Spectrum'
 
 if DisplayTechnology == 'st7735':
     if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
         WriteScreen1.write('No-Spectrum')
         WriteScreen1.close
         NowPlayingLayout = 'No-Spectrum'
 
 if DisplayTechnology == 'Braun':
     if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
         WriteScreen1.write('No-Spectrum')
         WriteScreen1.close
         NowPlayingLayout = 'No-Spectrum'        
 
 if DisplayTechnology == 'i2c1306':
     if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
         WriteScreen1.write('Progress-Bar')
         WriteScreen1.close
         NowPlayingLayout = 'Progress-Bar'        
@@ -140,27 +140,27 @@ if DisplayTechnology == 'i2c1306':
 if NowPlayingLayoutSave != NowPlayingLayout:
     if NowPlayingLayoutSave not in ScreenList and SpectrumActive == False:
         if DisplayTechnology == 'i2c1306':
-            WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteScreen1.write('Progress-Bar')
             WriteScreen1.close
             NowPlayingLayout = 'Progress-Bar'
         if DisplayTechnology == 'spi1322':
-            WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteScreen1.write('No-Spectrum')
             WriteScreen1.close
             NowPlayingLayout = 'No-Spectrum'
         if DisplayTechnology == 'spi1351':
-            WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteScreen1.write('No-Spectrum')
             WriteScreen1.close
             NowPlayingLayout = 'No-Spectrum'
         if DisplayTechnology == 'st7735':
-            WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteScreen1.write('No-Spectrum')
             WriteScreen1.close
             NowPlayingLayout = 'No-Spectrum'
         if DisplayTechnology == 'Braun':
-            WriteScreen1 = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteScreen1.write('No-Spectrum')
             WriteScreen1.close
             NowPlayingLayout = 'No-Spectrum'
@@ -582,7 +582,7 @@ def JPGPathfinder(String):
         JPGName = filenames[0]
         FullJPGPath = URLPath + JPGName
     except:
-        FullJPGPath = '/home/volumio/NR1-UI/NoCover.bmp'
+        FullJPGPath = '/home/volumio/Volumio-Oled-UI/NoCover.bmp'
     JPGSave(FullJPGPath)
     print('FullJPGPath: ', FullJPGPath)
 
@@ -610,7 +610,7 @@ def JPGSaveURL(link):
                 f.write(url.read())
         img = Image.open('temp.jpg')
     except:
-        img = Image.open('/home/volumio/NR1-UI/NoCover.bmp')    
+        img = Image.open('/home/volumio/Volumio-Oled-UI/NoCover.bmp')    
     width, height = img.size
     asp_rat = width/height
     new_width = 90
@@ -1439,7 +1439,7 @@ class NowPlayingScreen():
         if NowPlayingLayout == 'VU-Meter-2' and newStatus != 'stop' and DisplayTechnology == 'spi1322':
             if newStatus != 'stop' and oled.duration != None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vu2.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vu2.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
                 data2 = cava2_fifo.readline().strip().split(';')
@@ -1497,7 +1497,7 @@ class NowPlayingScreen():
 
             if newStatus != 'stop' and oled.duration == None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vu2.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vu2.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
                 data2 = cava2_fifo.readline().strip().split(';')
@@ -1547,7 +1547,7 @@ class NowPlayingScreen():
             global spectrumPeaksR
             if newStatus != 'stop' and oled.duration != None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vudig.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vudig.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 spec_gradient = np.linspace(Screen8specGradstart, Screen8specGradstop, Screen8specGradSamples)
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
@@ -1678,7 +1678,7 @@ class NowPlayingScreen():
 
             if newStatus != 'stop' and oled.duration == None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vudig.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vudig.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 spec_gradient = np.linspace(Screen8specGradstart, Screen8specGradstop, Screen8specGradSamples)
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
@@ -2616,7 +2616,7 @@ class NowPlayingScreen():
         if NowPlayingLayout == 'VU-Meter-2' and newStatus != 'stop' and DisplayTechnology == 'Braun':
             if newStatus != 'stop' and oled.duration != None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vu2.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vu2.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
                 data2 = cava2_fifo.readline().strip().split(';')
@@ -2674,7 +2674,7 @@ class NowPlayingScreen():
 
             if newStatus != 'stop' and oled.duration == None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vu2.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vu2.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
                 data2 = cava2_fifo.readline().strip().split(';')
@@ -2724,7 +2724,7 @@ class NowPlayingScreen():
             global spectrumPeaksRR
             if newStatus != 'stop' and oled.duration != None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vudig.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vudig.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 spec_gradient = np.linspace(Screen8specGradstart, Screen8specGradstop, Screen8specGradSamples)
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
@@ -2854,7 +2854,7 @@ class NowPlayingScreen():
                 image.paste(self.image, (0, 0))
             if newStatus != 'stop' and oled.duration == None:
                 self.image.paste(('black'), [0, 0, image.size[0], image.size[1]])
-                logoImage = Image.open('/home/volumio/NR1-UI/img/vudig.png').convert('RGB')
+                logoImage = Image.open('/home/volumio/Volumio-Oled-UI/img/vudig.png').convert('RGB')
                 self.image.paste(logoImage, (0, 0))
                 spec_gradient = np.linspace(Screen8specGradstart, Screen8specGradstop, Screen8specGradSamples)
                 cava2_fifo = open("/tmp/cava2_fifo", 'r')
@@ -4221,7 +4221,7 @@ def RightKnob_PushEvent(hold_time):
             global NowPlayingLayout
             oled.SelectedScreen = oled.modal.SelectedOption()
             Screen = ScreenList[oled.SelectedScreen]
-            WriteSelScreen = open('/home/volumio/NR1-UI/ConfigurationFiles/LayoutSet.txt', 'w')
+            WriteSelScreen = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
             WriteSelScreen.write(Screen)
             WriteSelScreen.close
             NowPlayingLayout = Screen

@@ -1,7 +1,7 @@
 #config for Standby
 StandbyActive = False
 
-#config for NR1-UI-Remote
+#config for Volumio-Oled-UI-Remote
 NR1UIRemoteActive = False
 
 #config for LED
