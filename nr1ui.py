@@ -69,32 +69,18 @@ volumioIO = SocketIO(volumio_host, volumio_port)
 #                       /____/
 #
 if DisplayTechnology == 'spi1322':
-    # if SpectrumActive == True:
-    #     ScreenList = ['Spectrum-Center', 'No-Spectrum', 'Modern', 'VU-Meter-2', 'VU-Meter-Bar']
-    if SpectrumActive == False:
-        ScreenList = ['No-Spectrum']
-
-if DisplayTechnology == 'Braun':
-    # if SpectrumActive == True:
-    #     ScreenList = ['Spectrum-Center', 'No-Spectrum', 'Modern', 'VU-Meter-2', 'VU-Meter-Bar']
     if SpectrumActive == False:
         ScreenList = ['No-Spectrum']
 
 if DisplayTechnology == 'spi1351':
-    # if SpectrumActive == True:
-    #     ScreenList = ['No-Spectrum', 'Spectrum-Center']
     if SpectrumActive == False:
         ScreenList = ['No-Spectrum']
 
 if DisplayTechnology == 'st7735':
-    # if SpectrumActive == True:
-    #     ScreenList = ['No-Spectrum', 'Spectrum-Center']
     if SpectrumActive == False:
         ScreenList = ['No-Spectrum']
 
 if DisplayTechnology == 'i2c1306':
-    # if SpectrumActive == True:
-    #     ScreenList = ['Progress-Bar', 'Essential', 'Spectrum-Screen']
     if SpectrumActive == False:
         ScreenList = ['Progress-Bar', 'Essential']
 
@@ -122,14 +108,7 @@ if DisplayTechnology == 'st7735':
         WriteScreen1.write('No-Spectrum')
         WriteScreen1.close
         NowPlayingLayout = 'No-Spectrum'
-
-if DisplayTechnology == 'Braun':
-    if NowPlayingLayout not in ScreenList:
-        WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
-        WriteScreen1.write('No-Spectrum')
-        WriteScreen1.close
-        NowPlayingLayout = 'No-Spectrum'        
-
+        
 if DisplayTechnology == 'i2c1306':
     if NowPlayingLayout not in ScreenList:
         WriteScreen1 = open('/home/volumio/Volumio-Oled-UI/ConfigurationFiles/LayoutSet.txt', 'w')
@@ -365,16 +344,16 @@ if DisplayTechnology == 'spi1322' or DisplayTechnology == 'Braun':
     font10 = load_font('NotoSansTC-Regular.otf', 14)                  #used for Artist ('Oxanium-Bold.ttf', 20)  
     font11 = load_font('Oxanium-Regular.ttf', 10)                     #used for specs in VUmeter2
     font12 = load_font('Oxanium-Regular.ttf', 12)                     #used for Artist/Song VU Meter2
-    font13 = load_font('NotoSansTC-Regular.otf', 14)                      #used for Artist ('Oxanium-Bold.ttf', 20)  
-    font14 = load_font('NotoSansTC-Light.otf', 12)                  #used for Artist ('Oxanium-Bold.ttf', 20)  
+    font13 = load_font('NotoSansTC-Regular.otf', 14)                  #used for Artist ('Oxanium-Bold.ttf', 20)  
+    font14 = load_font('NotoSansTC-Light.otf', 12)                    #used for Artist ('Oxanium-Bold.ttf', 20)  
     mediaicon = load_font('fa-solid-900.ttf', 10)    	              #used for icon in Media-library info
     labelfont = load_font('entypo.ttf', 12)                           #used for Menu-icons
     iconfontBottom = load_font('entypo.ttf', 10)                      #used for icons under the screen / button layout
     labelfontfa = load_font('fa-solid-900.ttf', 12)                   #used for icons under the screen / button layout
     labelfontfa2 = load_font('fa-solid-900.ttf', 14)
-    fontClock = load_font('DSG.ttf', 30)                              #used for clock
-    fontDate = load_font('Oxanium-Light.ttf', 12)                  #used for Date 'DSEG7Classic-Regular.ttf'
-    fontIP = load_font('Oxanium-Light.ttf', 12)                    #used for IP 'DSEG7Classic-Regular.ttf'
+    fontClock = load_font('Oxanium-Light.ttf', 32)                    #used for clock
+    fontDate = load_font('Oxanium-Light.ttf', 12)                     #used for Date 'DSEG7Classic-Regular.ttf'
+    fontIP = load_font('Oxanium-Light.ttf', 12)                       #used for IP 'DSEG7Classic-Regular.ttf'
 
 if DisplayTechnology == 'i2c1306':
     font = load_font('NotoSansTC-Regular.otf', 14)                    #used for Artist font2 = load_font('Oxanium-Light.ttf', 12)       
@@ -383,42 +362,42 @@ if DisplayTechnology == 'i2c1306':
     font4 = load_font('NotoSansTC-Medium.otf', 10)                    #used for Format/Smplerate/Bitdepth
     font5 = load_font('NotoSansTC-Regular.otf', 10)                   #used for artist in essential screen
     font6 = load_font('NotoSansTC-Regular.otf', 16)                   #used for Song in essential screen
-    font7 = load_font('NotoSansTC-Medium.otf', 8)                    #used for Format/Smplerate/Bitdepth @ essential screen
+    font7 = load_font('NotoSansTC-Medium.otf', 8)                     #used for Format/Smplerate/Bitdepth @ essential screen
     mediaicon = load_font('fa-solid-900.ttf', 10)    	              #used for icon in Media-library info
     iconfont = load_font('entypo.ttf', oled.HEIGHT)                   #used for play/pause/stop/shuffle/repeat... icons
     labelfont = load_font('entypo.ttf', 12)                           #used for Menu-icons
     iconfontBottom = load_font('entypo.ttf', 10)                      #used for icons under the screen / button layout
-    fontClock = load_font('DSG.ttf', 24)                              #used for clock
+    fontClock = load_font('Oxanium-Light.ttf', 24)                    #used for clock
     fontDate = load_font('NotoSansTC-Medium.otf', 10)                 #used for Date 
     fontIP = load_font('NotoSansTC-Medium.otf', 10)                   #used for IP      
 
 if DisplayTechnology == 'spi1351':
-    font = load_font('NotoSansCJK.ttc', 16)                       #used for Artist  NotoSansCJK.ttc
-    font2 = load_font('NotoSansCJK.ttc', 12)                     #used for all menus
-    font3 = load_font('NotoSansCJK.ttc', 14)                   #used for Song
-    font4 = load_font('NotoSansCJK.ttc', 12)                    #used for Format/Smplerate/Bitdepth
-    font5 = load_font('NotoSansCJK.ttc', 14)                    #used for Album
-    mediaicon = load_font('fa-solid-900.ttf', 10)    	           #used for icon in Media-library info
-    iconfont = load_font('entypo.ttf', oled.HEIGHT)                #used for play/pause/stop/shuffle/repeat... icons
-    labelfont = load_font('entypo.ttf', 12)                        #used for Menu-icons
-    iconfontBottom = load_font('entypo.ttf', 10)                   #used for icons under the screen / button layout
-    fontClock = load_font('DSG.ttf', 24)                           #used for clock
-    fontDate = load_font('NotoSansCJK.ttc', 12)           #used for Date 
-    fontIP = load_font('NotoSansCJK.ttc', 12)             #used for IP      
+    font = load_font('NotoSansCJK.ttc', 16)                           #used for Artist  NotoSansCJK.ttc
+    font2 = load_font('NotoSansCJK.ttc', 12)                          #used for all menus
+    font3 = load_font('NotoSansCJK.ttc', 14)                          #used for Song
+    font4 = load_font('NotoSansCJK.ttc', 12)                          #used for Format/Smplerate/Bitdepth
+    font5 = load_font('NotoSansCJK.ttc', 14)                          #used for Album
+    mediaicon = load_font('fa-solid-900.ttf', 10)    	              #used for icon in Media-library info
+    iconfont = load_font('entypo.ttf', oled.HEIGHT)                   #used for play/pause/stop/shuffle/repeat... icons
+    labelfont = load_font('entypo.ttf', 12)                           #used for Menu-icons
+    iconfontBottom = load_font('entypo.ttf', 10)                      #used for icons under the screen / button layout
+    fontClock = load_font('Oxanium-Light.ttf', 24)                    #used for clock
+    fontDate = load_font('NotoSansCJK.ttc', 12)                       #used for Date 
+    fontIP = load_font('NotoSansCJK.ttc', 12)                         #used for IP      
 
 if DisplayTechnology == 'st7735':
-    font = load_font('NotoSansCJK.ttc', 16)                       #used for Artist  NotoSansCJK.ttc
-    font2 = load_font('NotoSansCJK.ttc', 12)                     #used for all menus
-    font3 = load_font('NotoSansCJK.ttc', 14)                   #used for Song
-    font4 = load_font('NotoSansCJK.ttc', 12)                    #used for Format/Smplerate/Bitdepth
-    font5 = load_font('NotoSansCJK.ttc', 14)                    #used for Album
-    mediaicon = load_font('fa-solid-900.ttf', 10)    	           #used for icon in Media-library info
-    iconfont = load_font('entypo.ttf', oled.HEIGHT)                #used for play/pause/stop/shuffle/repeat... icons
-    labelfont = load_font('entypo.ttf', 12)                        #used for Menu-icons
-    iconfontBottom = load_font('entypo.ttf', 10)                   #used for icons under the screen / button layout
-    fontClock = load_font('DSG.ttf', 31)                           #used for clock
-    fontDate = load_font('NotoSansCJK.ttc', 12)           #used for Date 
-    fontIP = load_font('NotoSansCJK.ttc', 12)             #used for IP      
+    font = load_font('NotoSansCJK.ttc', 16)                           #used for Artist  NotoSansCJK.ttc
+    font2 = load_font('NotoSansCJK.ttc', 12)                          #used for all menus
+    font3 = load_font('NotoSansCJK.ttc', 14)                          #used for Song
+    font4 = load_font('NotoSansCJK.ttc', 12)                          #used for Format/Smplerate/Bitdepth
+    font5 = load_font('NotoSansCJK.ttc', 14)                          #used for Album
+    mediaicon = load_font('fa-solid-900.ttf', 10)    	              #used for icon in Media-library info
+    iconfont = load_font('entypo.ttf', oled.HEIGHT)                   #used for play/pause/stop/shuffle/repeat... icons
+    labelfont = load_font('entypo.ttf', 12)                           #used for Menu-icons
+    iconfontBottom = load_font('entypo.ttf', 10)                      #used for icons under the screen / button layout
+    fontClock = load_font('Oxanium-Light.ttf', 31)                    #used for clock
+    fontDate = load_font('NotoSansCJK.ttc', 12)                       #used for Date 
+    fontIP = load_font('NotoSansCJK.ttc', 12)                         #used for IP      
 #above are the "imports" for the fonts. 
 #After the name of the font comes a number, this defines the Size (height) of the letters. 
 #Just put .ttf file in the 'Volumio-OledUI/fonts' directory and make an import like above. 
@@ -505,8 +484,6 @@ signal.signal(signal.SIGTERM, sigterm_handler)
 if StandbyActive == True and firstStart == True:
     StandByListen = threading.Thread(target=StandByWatcher, daemon=True)
     StandByListen.start()
-    #if ledActive != True:
-    #   firstStart = False
 
 GetIP()
 #________________________________________________________________________________________

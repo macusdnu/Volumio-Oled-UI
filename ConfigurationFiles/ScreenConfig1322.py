@@ -7,7 +7,7 @@ oledShutdownLogo = "ShutdownScreen1322.bmp"
 
 #___________________________________________________________________
 #config for Clock/Standby:
-oledtext03 = 47, 4       #clock
+oledtext03 = 65, 4       #clock
 oledtext04 = 0, 52      #IP
 oledtext05 = 176, 52     #Date
 oledtext09 = 244, 51   #LibraryInfoIcon
